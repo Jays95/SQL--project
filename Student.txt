@@ -1,0 +1,58 @@
+-- Complusory Task1
+-- Write a the SQL code to "create" a "table" called students
+-- The "primary" "key" should be ste "as" STU_NUM
+
+-- 1_____________CREATE__________________
+CREATE TABLE Student(
+    STU_NUM int NOT NULL,
+    STU_SNAME varchar(15),
+    STU_FNAME varchar(15),
+    STU_INITIAL char(1),
+    STU_STARTDATE DATE NOT NULL,
+    COURSE_CODE INT,
+    PROJ_NUM INT,
+    PRIMARY KEY(STU_NUM)
+    );  
+--Write a SQL code to enter/insert data as per example set by Task
+--2_____________INSERT___________________
+INSERT INTO student(STU_NUM, STU_SNAME, STU_FNAME, STU_INITIAL, STU_STARTDATE, COURSE_CODE, PROJ_NUM)
+VALUES
+    (01,"Snow","Jon","E",2014-04-05,201,6),
+    (02,"stark","Arya","C",2017-07-12,305,11),
+    (03,"Lannister","Jamie","C",2012-09-05,101,2),
+    (04,"Lannister","Cercei","J",2012-09-05,401,2),
+    (05,"Greyjoy","Theon","I",2015-12-09,402,14),
+    (06,"Tyrell","Margear","Y",2017-07-12,305,10),
+    (07,"Baratheo","Tommen","R",2019-06-13,201,5);
+
+--Write a SQL code that will return all the records wHich have a COURSE_CODE of 305
+-3_______________SELECT________________
+SELECT * FROM Student WHERE COURSE_CODE = 305;
+-- OR
+SELECT COURSE_CODE FROM Student WHERE 
+COURSE_CODE = 305;
+
+--Write a SQL code to change the code to 304 for the person with the student "number" "07" to "304"
+-4_______________UPDATE_________________
+    UPDATE Student SET COURSE_CODE = 304 WHERE 
+    STU_NUM = 7;
+
+-- Write the SQL code to delete the row of the person, where is Named Lannister, Course num = 101
+DELETE FROM Student WHERE STU_NUM = 3 AND 
+STU_SNAME = 'Lannister' AND COURSE_CODE = 101;
+
+-5_______________DELETE__________________
+    DELETE FROM Student
+    WHERE STU_NUM = 03 AND STU_INITIAL ="C"       
+
+--Write the SQL code that will change the PROJ_NUM to 14 for all the students who stared before "1 Jan 2016"
+--The COURSE_CODE is at least >=201
+-6_______________UPDATE_________________
+UPDATE Student SET PROJ_NUM = 14 WHERE 
+STU_STARTDATE < '2016-01-01' AND COURSE_CODE >=
+201;
+
+--Dropping the entire student table 
+-7_______________DELETE TABLE__________________
+--Write a SQL code that will "delete" the student "table" entirely
+DROP TABLE Student;
